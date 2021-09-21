@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using SistemaConsultorio.Models;
-using SistemaConsultorio.ViewModels;
+using SistemaConsultorio.InputModels;
 using System;
 using System.Collections.Generic;
 using System.Data;

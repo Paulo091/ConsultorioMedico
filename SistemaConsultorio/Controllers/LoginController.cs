@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using SistemaConsultorio.DAL;
-using SistemaConsultorio.ViewModels;
+using SistemaConsultorio.InputModels;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -28,11 +28,11 @@ namespace SistemaConsultorio.Controllers
         [HttpPost]
         public async Task<IActionResult> Logar(LoginViewModel login) //https://localhost:44346/login/logar
         {
-            UsuarioRepositorySqlServer usuarioRepository = new UsuarioRepositorySqlServer(_configuration);
+            UsuarioRepositorySqlServer usuarioRepository = new(_configuration);
 
             var usuario = usuarioRepository.Autenticar(login);
             
-            List<Claim> direitosAcesso = new List<Claim>
+            List<Claim> direitosAcesso = new()
             {
                 new Claim(ClaimTypes.NameIdentifier,usuario.Id.ToString()),
                 new Claim(ClaimTypes.Name,usuario.Nome)
